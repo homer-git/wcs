@@ -13,9 +13,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Table
 @Entity
-public class T_BdcPreparationOrder implements Serializable {
+@Table(name = "T_BDC_Preparation_Order")  
+public class TBdcPreparationOrder implements Serializable {
 
 
 	/**
@@ -23,10 +23,10 @@ public class T_BdcPreparationOrder implements Serializable {
 	 */
 	private static final long serialVersionUID = -663941525452979473L;
 	
-	//@Column(name = "preparation_order_id", nullable = false, precision=12, scale=2)//设置属性preparationOrderId对应的字段为preparation_order_id，12位数字可保留两位小数，可以为空   
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	//@Column(name = "preparation_order_id", nullable = false, precision=12, scale=2)//设置属性preparationOrderId对应的字段为preparation_order_id，12位数字可保留两位小数，可以为空  
 	@Id
 	@Column(nullable = false, precision=20)//设置属性preparationOrderId对应的字段为preparation_order_id，20位数字可保留0小数，不可以为空  
+	@GeneratedValue(strategy=GenerationType.AUTO) 
 	private int preparationOrderId;
 	
 	@Column(nullable = false, length=100)
