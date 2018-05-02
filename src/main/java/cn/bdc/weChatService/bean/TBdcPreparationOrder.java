@@ -1,5 +1,8 @@
 package cn.bdc.weChatService.bean;
 
+
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -11,5 +14,7 @@ public class TBdcPreparationOrder {
 	private String preparationTitle;
 	private String preparationVersion;
 	private String preparationContent;
+	private Date publishDate;
+	private String createdBy;
 
 }
