@@ -25,7 +25,7 @@ import javax.persistence.GenerationType;
 
 @Table(name = "CAT")
 @Entity
-public class CatBean {
+public class Cat {
 	
 	/**
 	 * 使用@Id指定主键
