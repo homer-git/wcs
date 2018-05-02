@@ -52,6 +52,24 @@ public class TBdcPreparationOrder implements Serializable {
 	@Column(nullable = false, length=100)
 	private String createdUnit;
 
+	@Column(nullable = true, length=100)
+	private String createdSubUnit;
+
+	@Column(nullable = true, length=100)
+	private String attribute1;
+
+	@Column(nullable = true, length=100)
+	private String attribute2;
+
+	@Column(nullable = true, length=100)
+	private String attribute3;
+
+	@Column(nullable = true, length=100)
+	private String attribute4;
+
+	@Column(nullable = true, length=100)
+	private String attribute5;
+
 	public int getPreparationOrderId() {
 		return preparationOrderId;
 	}
@@ -163,27 +181,5 @@ public class TBdcPreparationOrder implements Serializable {
 	public void setAttribute5(String attribute5) {
 		this.attribute5 = attribute5;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	@Column(nullable = true, length=100)
-	private String createdSubUnit;
-
-	@Column(nullable = true, length=100)
-	private String attribute1;
-
-	@Column(nullable = true, length=100)
-	private String attribute2;
-
-	@Column(nullable = true, length=100)
-	private String attribute3;
-
-	@Column(nullable = true, length=100)
-	private String attribute4;
-
-	@Column(nullable = true, length=100)
-	private String attribute5;
-
+	
 }
