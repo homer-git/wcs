@@ -65,7 +65,12 @@ public class TBdcPreparationController {
 	public Iterable<TBdcPreparationOrder> getByPreparationTitleOrderLike(String preparationTitle){
 		String lPreparationTitle = preparationTitle + "%";
 		return tBdcPreparationOrderService.getByPreparationTitleLike(lPreparationTitle);
-	}
+	} 
+	
+	
+	//通知
+	@Resource
+	private TBdcPreparationNoticeService tBdcPreparationNoticeService;
 
 	
     /** 
@@ -77,12 +82,7 @@ public class TBdcPreparationController {
     	tBdcPreparationNoticeService.save(tBdcPreparationNotice);
     	
     	return "save ok.";
-    } 
-	
-	//通知
-	@Resource
-	private TBdcPreparationNoticeService tBdcPreparationNoticeService;
-	
+    }	
 	
 	@RequestMapping("/notice/delete")
 	public String deleteNotice(int id) {
@@ -94,7 +94,32 @@ public class TBdcPreparationController {
 	public Iterable<TBdcPreparationNotice> getAllNotice(){
 		return tBdcPreparationNoticeService.getAll();
 	}
+
+	@RequestMapping("/notice/getAllById")
+	public Iterable<TBdcPreparationNotice> getAllByIdNotice(Iterable<Integer> id){
+		return tBdcPreparationNoticeService.getAllById(id);
+	}
+
+	@RequestMapping("/notice/getById")
+	public Optional<TBdcPreparationNotice> getByIdNotice(Integer id){
+		return tBdcPreparationNoticeService.getById(id);
+	}
+
+	@RequestMapping("/notice/getByPreparationTitle")
+	public Optional<TBdcPreparationNotice> getByPreparationTitleNotice(String preparationTitle){
+		return tBdcPreparationNoticeService.getByPreparationTitle(preparationTitle);
+	}
+
+	@RequestMapping("/notice/getByPreparationTitleLike")
+	public Iterable<TBdcPreparationNotice> getByPreparationTitleNoticeLike(String preparationTitle){
+		String lPreparationTitle = preparationTitle + "%";
+		return tBdcPreparationNoticeService.getByPreparationTitleLike(lPreparationTitle);
+	} 
 	
+	
+	
+	
+	//TEST/////////
 
 	@RequestMapping("/order/saveTest")
 	public String saveOrderTest() {
