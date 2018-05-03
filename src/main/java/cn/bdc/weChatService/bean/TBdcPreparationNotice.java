@@ -1,6 +1,5 @@
 package cn.bdc.weChatService.bean;
 
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,40 +9,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "T_BDC_Preparation_Order")  
-public class TBdcPreparationOrder implements Serializable {
-
+@Table(name = "T_BDC_Preparation_Notice")  
+public class TBdcPreparationNotice implements Serializable {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -663941525452979473L;
-	
-	//@Column(name = "preparation_order_id", nullable = false, precision=12, scale=2)//设置属性preparationOrderId对应的字段为preparation_order_id，12位数字可保留两位小数，可以为空  
+	private static final long serialVersionUID = 6705235460770136192L;
+ 
 	@Id
 	@Column(nullable = false, precision=20)//设置属性preparationOrderId对应的字段为preparation_order_id，20位数字可保留0小数，不可以为空  
 	@GeneratedValue(strategy=GenerationType.AUTO) 
-	private int preparationOrderId;
-	
+	private int preparationNoticeId;
+
 	@Column(nullable = false, length=100)
 	private String preparationTitle;
 
-	@Column(nullable = true, length=20)
-	private String preparationVersion;
-
-	@Column(nullable = false, length=1000)
+	@Column(nullable = false, length=500)
 	private String preparationContent;
 
 	@Column(nullable = false)
-//	@Temporal(TemporalType.DATE)//设置为时间类型    
 	private Date publishDate;
 
 	@Column(nullable = false)
-//	@Temporal(TemporalType.TIME)//设置为时间类型  
 	private Date crateDate;
 
 	@Column(nullable = false, length=20)
@@ -70,12 +60,12 @@ public class TBdcPreparationOrder implements Serializable {
 	@Column(nullable = true, length=100)
 	private String attribute5;
 
-	public int getPreparationOrderId() {
-		return preparationOrderId;
+	public int getPreparationNoticeId() {
+		return preparationNoticeId;
 	}
 
-	public void setPreparationOrderId(int preparationOrderId) {
-		this.preparationOrderId = preparationOrderId;
+	public void setPreparationNoticeId(int preparationNoticeId) {
+		this.preparationNoticeId = preparationNoticeId;
 	}
 
 	public String getPreparationTitle() {
@@ -84,14 +74,6 @@ public class TBdcPreparationOrder implements Serializable {
 
 	public void setPreparationTitle(String preparationTitle) {
 		this.preparationTitle = preparationTitle;
-	}
-
-	public String getPreparationVersion() {
-		return preparationVersion;
-	}
-
-	public void setPreparationVersion(String preparationVersion) {
-		this.preparationVersion = preparationVersion;
 	}
 
 	public String getPreparationContent() {
@@ -181,5 +163,6 @@ public class TBdcPreparationOrder implements Serializable {
 	public void setAttribute5(String attribute5) {
 		this.attribute5 = attribute5;
 	}
-	
+
+
 }
