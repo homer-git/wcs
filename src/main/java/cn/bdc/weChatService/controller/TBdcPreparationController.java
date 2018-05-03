@@ -32,13 +32,13 @@ public class TBdcPreparationController {
     public String saveOrder(@RequestBody TBdcPreparationOrder tBdcPreparationOrder) {  
     	tBdcPreparationOrderService.save(tBdcPreparationOrder);
     	
-    	return "save ok.";
+    	return "save success.";
     } 
 	
 	@RequestMapping("/order/delete")
 	public String deleteOrder(int id) {
 		tBdcPreparationOrderService.delete(id);
-		return "delete ok.";
+		return "delete success.";
 	}
 
 	@RequestMapping("/order/getAll")
@@ -81,13 +81,13 @@ public class TBdcPreparationController {
     public String saveNotice(@RequestBody TBdcPreparationNotice tBdcPreparationNotice) {  
     	tBdcPreparationNoticeService.save(tBdcPreparationNotice);
     	
-    	return "save ok.";
+    	return "save success.";
     }	
 	
 	@RequestMapping("/notice/delete")
 	public String deleteNotice(int id) {
 		tBdcPreparationNoticeService.delete(id);
-		return "delete ok.";
+		return "delete success.";
 	}
 
 	@RequestMapping("/notice/getAll")
@@ -134,7 +134,7 @@ public class TBdcPreparationController {
 		
 		tBdcPreparationOrderService.save(tBdcPreparationOrder);
 		
-		return "save ok.";
+		return "save success.";
 	}
 	
 	@RequestMapping("/notice/saveTest")
@@ -149,7 +149,7 @@ public class TBdcPreparationController {
 		
 		tBdcPreparationNoticeService.save(tBdcPreparationNotice);
 		
-		return "save ok.";
+		return "save success.";
 	}
 
 }
