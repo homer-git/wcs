@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 /**
  * 
  * @author Homer
+ * @version 1.0
  *
  * 创建一个实体类。
  * 
