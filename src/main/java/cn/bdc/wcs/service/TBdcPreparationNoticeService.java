@@ -1,4 +1,4 @@
-package cn.bdc.weChatService.service;
+package cn.bdc.wcs.service;
 
 import java.util.Optional;
 
@@ -7,8 +7,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import cn.bdc.weChatService.bean.TBdcPreparationNotice;
-import cn.bdc.weChatService.repository.TBdcPreparationNoticeRepository;
+import cn.bdc.wcs.bean.TBdcPreparationNotice;
+import cn.bdc.wcs.repository.TBdcPreparationNoticeRepository;
 
 @Service
 public class TBdcPreparationNoticeService {

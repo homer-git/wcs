@@ -1,4 +1,4 @@
-package cn.bdc.weChatService.controller;
+package cn.bdc.wcs.controller;
 
 
 import javax.annotation.Resource;
@@ -6,8 +6,8 @@ import javax.annotation.Resource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.bdc.weChatService.bean.Cat;
-import cn.bdc.weChatService.service.CatService;
+import cn.bdc.wcs.bean.Cat;
+import cn.bdc.wcs.service.CatService;
 
 @RestController
 @RequestMapping("/cat")

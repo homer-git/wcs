@@ -1,4 +1,4 @@
-package cn.bdc.weChatService.service;
+package cn.bdc.wcs.service;
 
 
 import javax.annotation.Resource;
@@ -6,8 +6,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import cn.bdc.weChatService.bean.Cat;
-import cn.bdc.weChatService.repository.CatRepository;
+import cn.bdc.wcs.bean.Cat;
+import cn.bdc.wcs.repository.CatRepository;
 
 
 @Service

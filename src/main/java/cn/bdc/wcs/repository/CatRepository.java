@@ -1,9 +1,9 @@
-package cn.bdc.weChatService.repository;
+package cn.bdc.wcs.repository;
 
 
 import org.springframework.data.repository.CrudRepository;
 
-import cn.bdc.weChatService.bean.Cat;
+import cn.bdc.wcs.bean.Cat;
 
 
 public interface CatRepository extends CrudRepository<Cat, Integer> {

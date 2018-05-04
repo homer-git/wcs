@@ -1,4 +1,4 @@
-package cn.bdc.weChatService.service;
+package cn.bdc.wcs.service;
 
 import java.util.Optional;
 
@@ -7,8 +7,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
-import cn.bdc.weChatService.bean.TBdcStatusFeedback;
-import cn.bdc.weChatService.repository.TBdcStatusFeedbackRepository;
+import cn.bdc.wcs.bean.TBdcStatusFeedback;
+import cn.bdc.wcs.repository.TBdcStatusFeedbackRepository;
 
 @Service
 public class TBdcStatusFeedbackService {

@@ -1,10 +1,10 @@
-package cn.bdc.weChatService.repository;
+package cn.bdc.wcs.repository;
 
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import cn.bdc.weChatService.bean.TBdcPreparationNotice;
+import cn.bdc.wcs.bean.TBdcPreparationNotice;
 
 public interface TBdcPreparationNoticeRepository extends CrudRepository<TBdcPreparationNotice, Integer> {
 	

@@ -1,4 +1,4 @@
-package cn.bdc.weChatService.controller;
+package cn.bdc.wcs.controller;
 
 import java.util.Date;
 import java.util.Optional;
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.bdc.weChatService.bean.TBdcPreparationOrder;
-import cn.bdc.weChatService.bean.TBdcStatusFeedback;
-import cn.bdc.weChatService.service.TBdcStatusFeedbackService;
+import cn.bdc.wcs.bean.TBdcPreparationOrder;
+import cn.bdc.wcs.bean.TBdcStatusFeedback;
+import cn.bdc.wcs.service.TBdcStatusFeedbackService;
 
 
 @RestController

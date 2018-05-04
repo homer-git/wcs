@@ -1,4 +1,4 @@
-package cn.bdc.weChatService.bean;
+package cn.bdc.wcs.bean;
 
 
 import javax.persistence.Entity;

@@ -1,12 +1,12 @@
-package cn.bdc.weChatService;
+package cn.bdc.wcs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WeChatServiceApplication {
+public class WcsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WeChatServiceApplication.class, args);
+		SpringApplication.run(WcsApplication.class, args);
 	}
 }
