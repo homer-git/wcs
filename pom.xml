@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>cn.bdc</groupId>
-	<artifactId>weChatService</artifactId>
+	<artifactId>wcs</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>weChatService</name>
+	<name>wcs</name>
 	<description>北排集团微信服务号</description>
 
 	<parent>
