@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "T_BDC_Status_Feedback")  
@@ -79,6 +81,7 @@ public class TBdcStatusFeedback implements Serializable {
 	private int allHumans;
 
 	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)//设置为时间类型 
 	private Date crateDate;
 
 	@Column(nullable = false, length=20)

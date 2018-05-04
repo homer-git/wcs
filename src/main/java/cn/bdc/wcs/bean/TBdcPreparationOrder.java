@@ -42,11 +42,11 @@ public class TBdcPreparationOrder implements Serializable {
 	private String preparationContent;
 
 	@Column(nullable = false)
-//	@Temporal(TemporalType.DATE)//设置为时间类型    
+	@Temporal(TemporalType.TIMESTAMP)//设置为时间类型    
 	private Date publishDate;
 
 	@Column(nullable = false)
-//	@Temporal(TemporalType.TIME)//设置为时间类型  
+	@Temporal(TemporalType.TIMESTAMP)//设置为时间类型  
 	private Date crateDate;
 
 	@Column(nullable = false, length=20)

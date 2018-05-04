@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "T_BDC_Preparation_Notice")  
@@ -31,9 +33,11 @@ public class TBdcPreparationNotice implements Serializable {
 	private String preparationContent;
 
 	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)//设置为时间类型 
 	private Date publishDate;
 
 	@Column(nullable = false)
+	@Temporal(TemporalType.TIMESTAMP)//设置为时间类型 
 	private Date crateDate;
 
 	@Column(nullable = false, length=20)
