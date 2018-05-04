@@ -154,7 +154,7 @@ public class TBdcPreparationOrder implements Serializable {
 	}
 
 	public String getAttribute2() {
-		return attribute2 ;
+		return attribute2;
 	}
 
 	public void setAttribute2(String attribute2) {
