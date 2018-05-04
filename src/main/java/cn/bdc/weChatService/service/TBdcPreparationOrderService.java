@@ -30,8 +30,8 @@ public class TBdcPreparationOrderService {
 		return tBdcPreparationOrderRepository.findAll();
 	}
 
-	public Iterable<TBdcPreparationOrder> getAllById(Iterable<Integer> id){
-		return tBdcPreparationOrderRepository.findAllById(id);
+	public Iterable<TBdcPreparationOrder> getAllById(Iterable<Integer> ids){
+		return tBdcPreparationOrderRepository.findAllById(ids);
 	}
 
 	public Optional<TBdcPreparationOrder> getById(int id){

@@ -2,13 +2,16 @@ package cn.bdc.weChatService.bean;
 
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -181,5 +184,8 @@ public class TBdcPreparationOrder implements Serializable {
 	public void setAttribute5(String attribute5) {
 		this.attribute5 = attribute5;
 	}
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "preparationOrderId")//指向多的那方的pojo的关联外键字段       
+	private Collection<TBdcStatusFeedback> tBdcStatusFeedbackCollection;     
 	
 }

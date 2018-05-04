@@ -47,8 +47,8 @@ public class TBdcPreparationController {
 	}
 
 	@RequestMapping("/order/getAllById")
-	public Iterable<TBdcPreparationOrder> getAllByIdOrder(Iterable<Integer> id){
-		return tBdcPreparationOrderService.getAllById(id);
+	public Iterable<TBdcPreparationOrder> getAllByIdOrder(Iterable<Integer> ids){
+		return tBdcPreparationOrderService.getAllById(ids);
 	}
 
 	@RequestMapping("/order/getById")
@@ -96,8 +96,8 @@ public class TBdcPreparationController {
 	}
 
 	@RequestMapping("/notice/getAllById")
-	public Iterable<TBdcPreparationNotice> getAllByIdNotice(Iterable<Integer> id){
-		return tBdcPreparationNoticeService.getAllById(id);
+	public Iterable<TBdcPreparationNotice> getAllByIdNotice(Iterable<Integer> ids){
+		return tBdcPreparationNoticeService.getAllById(ids);
 	}
 
 	@RequestMapping("/notice/getById")
