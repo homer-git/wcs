@@ -24,7 +24,7 @@ public class TBdcPreparationOrder implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -663941525452979473L;
+	private static final long serialVersionUID = 1L;
 	
 	//@Column(name = "preparation_order_id", nullable = false, precision=12, scale=2)//设置属性preparationOrderId对应的字段为preparation_order_id，12位数字可保留两位小数，可以为空  
 	@Id

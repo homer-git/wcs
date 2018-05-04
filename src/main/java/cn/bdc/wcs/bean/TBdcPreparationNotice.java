@@ -17,7 +17,7 @@ public class TBdcPreparationNotice implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6705235460770136192L;
+	private static final long serialVersionUID = 1L;
  
 	@Id
 	@Column(nullable = false, precision=20)//设置属性preparationOrderId对应的字段为preparation_order_id，20位数字可保留0小数，不可以为空  
