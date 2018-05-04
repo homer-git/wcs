@@ -7,6 +7,9 @@ application.properties
 ### keystore.p12 ###
 keystore.p12
 
+### .DS_ ###
+.DS_*
+
 ### STS ###
 .apt_generated
 .classpath
