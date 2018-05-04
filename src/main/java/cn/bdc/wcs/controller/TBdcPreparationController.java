@@ -124,9 +124,9 @@ public class TBdcPreparationController {
 	@RequestMapping("/order/saveTest")
 	public String saveOrderTest() {
 		TBdcPreparationOrder tBdcPreparationOrder = new TBdcPreparationOrder();
-		tBdcPreparationOrder.setPreparationTitle("Tile Preparation Order");
+		tBdcPreparationOrder.setPreparationTitle("Tile Preparation Order 中文测试");
 		tBdcPreparationOrder.setPreparationVersion("1.0");
-		tBdcPreparationOrder.setPreparationContent("Content Preparation Order");
+		tBdcPreparationOrder.setPreparationContent("Content Preparation Order 中文测试");
 		tBdcPreparationOrder.setPublishDate(new Date());
 		tBdcPreparationOrder.setCrateDate(new Date());
 		tBdcPreparationOrder.setCreatedBy("-1");
@@ -140,8 +140,8 @@ public class TBdcPreparationController {
 	@RequestMapping("/notice/saveTest")
 	public String saveNoticeTest() {
 		TBdcPreparationNotice tBdcPreparationNotice = new TBdcPreparationNotice();
-		tBdcPreparationNotice.setPreparationTitle("Tile Preparation Notice");
-		tBdcPreparationNotice.setPreparationContent("Content Preparation Notice");
+		tBdcPreparationNotice.setPreparationTitle("Tile Preparation Notice 中文测试");
+		tBdcPreparationNotice.setPreparationContent("Content Preparation Notice 中文测试");
 		tBdcPreparationNotice.setPublishDate(new Date());
 		tBdcPreparationNotice.setCrateDate(new Date());
 		tBdcPreparationNotice.setCreatedBy("-1");
