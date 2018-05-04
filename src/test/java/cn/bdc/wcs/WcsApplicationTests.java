@@ -1,4 +1,4 @@
-package cn.bdc.weChatService;
+package cn.bdc.wcs;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
