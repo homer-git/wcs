@@ -80,6 +80,9 @@ public class TBdcStatusFeedback implements Serializable {
 	@Column(nullable = true, precision=20)
 	private int allHumans;
 
+	@Column(nullable = true, precision=2)
+	private int status;
+
 	@Column(nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)//设置为时间类型 
 	private Date crateDate;
@@ -242,6 +245,14 @@ public class TBdcStatusFeedback implements Serializable {
 
 	public void setAllHumans(int allHumans) {
 		this.allHumans = allHumans;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 	public Date getCrateDate() {

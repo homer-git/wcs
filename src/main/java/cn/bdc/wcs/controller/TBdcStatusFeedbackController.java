@@ -67,6 +67,7 @@ public class TBdcStatusFeedbackController {
 		tBdcStatusFeedback.setPreparationOrderId(tBdcPreparationOrder);
 		tBdcStatusFeedback.setVehiclePatrolsHumans(10);
 		tBdcStatusFeedback.setVehiclePatrolsUnits(2);
+		tBdcStatusFeedback.setStatus(1);
 		tBdcStatusFeedback.setCrateDate(new Date());
 		tBdcStatusFeedback.setCreatedBy("-1");
 		tBdcStatusFeedback.setCreatedUnit("-1");
