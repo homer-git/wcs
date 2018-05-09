@@ -1,6 +1,8 @@
 package cn.bdc.wcs.controller;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.annotation.Resource;
@@ -29,10 +31,15 @@ public class TBdcPreparationController {
      *  
      */  
     @RequestMapping(value = "/order/save", method = { RequestMethod.POST, RequestMethod.GET })  
-    public String saveOrder(@RequestBody TBdcPreparationOrder tBdcPreparationOrder) {  
+    public Map<String, String> saveOrder(@RequestBody TBdcPreparationOrder tBdcPreparationOrder) { 
+    	Map<String, String> returnMap = new HashMap<String, String>();
+    	if(null == tBdcPreparationOrder.getPreparationVersion()) {
+    		tBdcPreparationOrder.setPreparationVersion(tBdcPreparationOrderService.getNextPreparationVersion());
+    	}
     	tBdcPreparationOrderService.save(tBdcPreparationOrder);
+    	returnMap.put("preparationOrderId", String.valueOf(tBdcPreparationOrder.getPreparationOrderId()));
     	
-    	return "save success.";
+    	return returnMap;
     } 
 	
 	@RequestMapping("/order/delete")
@@ -83,10 +90,13 @@ public class TBdcPreparationController {
      *  
      */  
     @RequestMapping(value = "/notice/save", method = { RequestMethod.POST, RequestMethod.GET })  
-    public String saveNotice(@RequestBody TBdcPreparationNotice tBdcPreparationNotice) {  
-    	tBdcPreparationNoticeService.save(tBdcPreparationNotice);
+    public Map<String, String> saveNotice(@RequestBody TBdcPreparationNotice tBdcPreparationNotice) { 
+    	Map<String, String> returnMap = new HashMap<String, String>();
     	
-    	return "save success.";
+    	tBdcPreparationNoticeService.save(tBdcPreparationNotice);    	
+    	returnMap.put("preparationNoticeId", String.valueOf(tBdcPreparationNotice.getPreparationNoticeId()));
+    	
+    	return returnMap;
     }	
 	
 	@RequestMapping("/notice/delete")
@@ -127,10 +137,12 @@ public class TBdcPreparationController {
 	//TEST/////////
 
 	@RequestMapping("/order/saveTest")
-	public String saveOrderTest() {
+	public Map<String, String> saveOrderTest() {
+    	Map<String, String> returnMap = new HashMap<String, String>();
+    	
 		TBdcPreparationOrder tBdcPreparationOrder = new TBdcPreparationOrder();
 		tBdcPreparationOrder.setPreparationTitle("Tile Preparation Order 中文测试");
-		tBdcPreparationOrder.setPreparationVersion("1.0");
+		tBdcPreparationOrder.setPreparationVersion(tBdcPreparationOrderService.getNextPreparationVersion());
 		tBdcPreparationOrder.setPreparationContent("Content Preparation Order 中文测试");
 		tBdcPreparationOrder.setPublishDate(new Date());
 		tBdcPreparationOrder.setCrateDate(new Date());
@@ -138,12 +150,15 @@ public class TBdcPreparationController {
 		tBdcPreparationOrder.setCreatedUnit("-1");
 		
 		tBdcPreparationOrderService.save(tBdcPreparationOrder);
+		returnMap.put("preparationOrderId", String.valueOf(tBdcPreparationOrder.getPreparationOrderId()));
 		
-		return "save success.";
+		return returnMap;
 	}
 	
 	@RequestMapping("/notice/saveTest")
-	public String saveNoticeTest() {
+	public Map<String, String> saveNoticeTest() {
+    	Map<String, String> returnMap = new HashMap<String, String>();
+    	
 		TBdcPreparationNotice tBdcPreparationNotice = new TBdcPreparationNotice();
 		tBdcPreparationNotice.setPreparationTitle("Tile Preparation Notice 中文测试");
 		tBdcPreparationNotice.setPreparationContent("Content Preparation Notice 中文测试");
@@ -153,8 +168,9 @@ public class TBdcPreparationController {
 		tBdcPreparationNotice.setCreatedUnit("-1");
 		
 		tBdcPreparationNoticeService.save(tBdcPreparationNotice);
+		returnMap.put("preparationNoticeId", String.valueOf(tBdcPreparationNotice.getPreparationNoticeId()));
 		
-		return "save success.";
+		return returnMap;
 	}
 
 }

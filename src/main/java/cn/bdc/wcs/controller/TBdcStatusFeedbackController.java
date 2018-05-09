@@ -1,6 +1,8 @@
 package cn.bdc.wcs.controller;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import javax.annotation.Resource;
@@ -27,10 +29,13 @@ public class TBdcStatusFeedbackController {
      *  
      */  
     @RequestMapping(value = "/feedback/save", method = { RequestMethod.POST, RequestMethod.GET })  
-    public String saveFeedback(@RequestBody TBdcStatusFeedback tBdcStatusFeedback) {  
-    	tBdcStatusFeedbackService.save(tBdcStatusFeedback);
+    public Map<String, String> saveFeedback(@RequestBody TBdcStatusFeedback tBdcStatusFeedback) {  
+    	Map<String, String> returnMap = new HashMap<String, String>();
     	
-    	return "save success.";
+    	tBdcStatusFeedbackService.save(tBdcStatusFeedback);
+    	returnMap.put("statusFeedbackId", String.valueOf(tBdcStatusFeedback.getStatusFeedbackId()));
+    	
+    	return returnMap;
     } 
 	
 	@RequestMapping("/feedback/delete")
@@ -58,7 +63,9 @@ public class TBdcStatusFeedbackController {
 	//TEST/////////
 	
 	@RequestMapping("/feedback/saveTest")
-	public String saveFeedbackTest() {
+	public Map<String, String> saveFeedbackTest() {
+    	Map<String, String> returnMap = new HashMap<String, String>();
+    	
 		TBdcPreparationOrder tBdcPreparationOrder = new TBdcPreparationOrder();
 		tBdcPreparationOrder.setPreparationOrderId(26);
 		
@@ -73,7 +80,8 @@ public class TBdcStatusFeedbackController {
 		tBdcStatusFeedback.setCreatedUnit("-1");
 		
 		tBdcStatusFeedbackService.save(tBdcStatusFeedback);
+    	returnMap.put("statusFeedbackId", String.valueOf(tBdcStatusFeedback.getStatusFeedbackId()));
 		
-		return "save success.";
+		return returnMap;
 	}
 }
