@@ -66,6 +66,11 @@ public class TBdcPreparationController {
 		String lPreparationTitle = preparationTitle + "%";
 		return tBdcPreparationOrderService.getByPreparationTitleLike(lPreparationTitle);
 	} 
+
+	@RequestMapping("/order/getNextPreparationVersion")
+	public String getNextPreparationVersion(){
+		return tBdcPreparationOrderService.getNextPreparationVersion();
+	} 
 	
 	
 	//通知
