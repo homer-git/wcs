@@ -50,12 +50,12 @@ public class TBdcStatusFeedbackService extends BaseService {
 	}
 
 	@Transactional
-	public Optional<TBdcStatusFeedback> getSumById(int id){
+	public Optional<TBdcStatusFeedback> getSumByPreparationOrderId(int preparationOrderId){
 
 //		Query query = em.createQuery("SELECT sum(largeEmergencyHumans), sum(largeEmergencyHumans), sum(largeEmergencyUnits), sum(midEmergencyHumans), sum(midEmergencyUnits), sum(smallEmergencyHumans), sum(smallEmergencyUnits), sum(vehiclePatrolsHumans), sum(vehiclePatrolsUnits), sum(salvageHumans), sum(salvageUnits), sum(repairemergencyHumans), sum(repairemergencyUnits), sum(pumpHumans), sum(commandPost) FROM  TBdcStatusFeedback WHERE preparationOrderId = :Id AND status = 1 group by preparationOrderId");
 		Query query = em.createQuery("SELECT sum(t.largeEmergencyHumans), sum(t.largeEmergencyUnits), sum(t.midEmergencyHumans), sum(t.midEmergencyUnits), sum(t.smallEmergencyHumans), sum(t.smallEmergencyUnits), sum(t.vehiclePatrolsHumans), sum(t.vehiclePatrolsUnits), sum(t.salvageHumans), sum(t.salvageUnits), sum(t.repairemergencyHumans), sum(t.repairemergencyUnits), sum(t.pumpHumans), sum(t.commandPost), sum(t.allHumans) FROM  TBdcStatusFeedback t WHERE t.preparationOrderId = :Id AND t.status = 1 group by t.preparationOrderId");
 		TBdcPreparationOrder tBdcPreparationOrder = new TBdcPreparationOrder();
-		tBdcPreparationOrder.setPreparationOrderId(id);
+		tBdcPreparationOrder.setPreparationOrderId(preparationOrderId);
 		query.setParameter("Id", tBdcPreparationOrder); 
 		List list = query.getResultList();
 		TBdcStatusFeedback tBdcStatusFeedback = new TBdcStatusFeedback();

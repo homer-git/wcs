@@ -76,9 +76,9 @@ public class TBdcStatusFeedbackController {
 		return tBdcStatusFeedbackService.getAllByPreparationOrderId(preparationOrderId);
 	}
 
-	@RequestMapping("/feedback/getSumById")
-	public Optional<TBdcStatusFeedback> getSumById(Integer id){
-		return tBdcStatusFeedbackService.getSumById(id);
+	@RequestMapping("/feedback/getSumByPreparationOrderId")
+	public Optional<TBdcStatusFeedback> getSumByPreparationOrderId(Integer preparationOrderId){
+		return tBdcStatusFeedbackService.getSumByPreparationOrderId(preparationOrderId);
 	}
 	
 
