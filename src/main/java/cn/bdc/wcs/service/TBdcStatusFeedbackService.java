@@ -43,8 +43,10 @@ public class TBdcStatusFeedbackService extends BaseService {
 		return tBdcStatusFeedbackRepository.findById(id);
 	}
 
-	public Iterable<TBdcStatusFeedback> getAllByPreparationOrderId(Iterable<Integer> preparationOrderIds){
-		return tBdcStatusFeedbackRepository.findAllByPreparationOrderId(preparationOrderIds);
+	public Iterable<TBdcStatusFeedback> getAllByPreparationOrderId(int preparationOrderId){
+		TBdcPreparationOrder tBdcPreparationOrder = new TBdcPreparationOrder();
+		tBdcPreparationOrder.setPreparationOrderId(preparationOrderId);
+		return tBdcStatusFeedbackRepository.findAllByPreparationOrderId(tBdcPreparationOrder);
 	}
 
 	@Transactional

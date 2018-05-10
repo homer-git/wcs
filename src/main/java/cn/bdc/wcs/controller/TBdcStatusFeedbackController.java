@@ -62,6 +62,19 @@ public class TBdcStatusFeedbackController {
 	public Optional<TBdcStatusFeedback> getByIdFeedback(Integer id){
 		return tBdcStatusFeedbackService.getById(id);
 	}
+	
+	/**
+	 * 
+	 * 根据备勤令id获取各单位相应详情
+	 * 
+	 * @param preparationOrderId
+	 * @return TBdcStatusFeedbacks
+	 */
+
+	@RequestMapping("/feedback/getAllByPreparationOrderId")
+	public Iterable<TBdcStatusFeedback> getAllByPreparationOrderId(int preparationOrderId){
+		return tBdcStatusFeedbackService.getAllByPreparationOrderId(preparationOrderId);
+	}
 
 	@RequestMapping("/feedback/getSumById")
 	public Optional<TBdcStatusFeedback> getSumById(Integer id){
