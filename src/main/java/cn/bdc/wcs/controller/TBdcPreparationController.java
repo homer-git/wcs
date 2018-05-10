@@ -36,6 +36,10 @@ public class TBdcPreparationController {
     	if(null == tBdcPreparationOrder.getPreparationVersion()) {
     		tBdcPreparationOrder.setPreparationVersion(tBdcPreparationOrderService.getNextPreparationVersion());
     	}
+		tBdcPreparationOrder.setPublishDate(new Date());
+		tBdcPreparationOrder.setCrateDate(new Date());
+		tBdcPreparationOrder.setCreatedBy("-1");
+		tBdcPreparationOrder.setCreatedUnit("-1");
     	tBdcPreparationOrderService.save(tBdcPreparationOrder);
     	returnMap.put("preparationOrderId", String.valueOf(tBdcPreparationOrder.getPreparationOrderId()));
     	
@@ -92,7 +96,11 @@ public class TBdcPreparationController {
     @RequestMapping(value = "/notice/save", method = { RequestMethod.POST, RequestMethod.GET })  
     public Map<String, String> saveNotice(@RequestBody TBdcPreparationNotice tBdcPreparationNotice) { 
     	Map<String, String> returnMap = new HashMap<String, String>();
-    	
+
+		tBdcPreparationNotice.setPublishDate(new Date());
+		tBdcPreparationNotice.setCrateDate(new Date());
+		tBdcPreparationNotice.setCreatedBy("-1");
+		tBdcPreparationNotice.setCreatedUnit("-1");
     	tBdcPreparationNoticeService.save(tBdcPreparationNotice);    	
     	returnMap.put("preparationNoticeId", String.valueOf(tBdcPreparationNotice.getPreparationNoticeId()));
     	

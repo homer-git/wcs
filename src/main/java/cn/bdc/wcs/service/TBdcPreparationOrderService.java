@@ -4,23 +4,24 @@ import java.util.Calendar;
 import java.util.Optional;
 
 import javax.annotation.Resource;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+//import javax.persistence.EntityManager;
+//import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
 import cn.bdc.wcs.bean.TBdcPreparationOrder;
+import cn.bdc.wcs.common.service.BaseService;
 import cn.bdc.wcs.repository.TBdcPreparationOrderRepository;
 
 import org.springframework.util.StringUtils;
 
 @Service
-public class TBdcPreparationOrderService {
+public class TBdcPreparationOrderService extends BaseService {
 	
-	@PersistenceContext
-	private EntityManager em;	
+//	@PersistenceContext
+//	private EntityManager em;	
 	
 	@Resource
 	private TBdcPreparationOrderRepository tBdcPreparationOrderRepository;

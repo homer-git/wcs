@@ -31,7 +31,11 @@ public class TBdcStatusFeedbackController {
     @RequestMapping(value = "/feedback/save", method = { RequestMethod.POST, RequestMethod.GET })  
     public Map<String, String> saveFeedback(@RequestBody TBdcStatusFeedback tBdcStatusFeedback) {  
     	Map<String, String> returnMap = new HashMap<String, String>();
-    	
+
+		tBdcStatusFeedback.setStatus(1);
+		tBdcStatusFeedback.setCrateDate(new Date());
+		tBdcStatusFeedback.setCreatedBy("-1");
+		tBdcStatusFeedback.setCreatedUnit("-1");
     	tBdcStatusFeedbackService.save(tBdcStatusFeedback);
     	returnMap.put("statusFeedbackId", String.valueOf(tBdcStatusFeedback.getStatusFeedbackId()));
     	
@@ -58,6 +62,11 @@ public class TBdcStatusFeedbackController {
 	public Optional<TBdcStatusFeedback> getByIdFeedback(Integer id){
 		return tBdcStatusFeedbackService.getById(id);
 	}
+
+	@RequestMapping("/feedback/getSumById")
+	public Optional<TBdcStatusFeedback> getSumById(Integer id){
+		return tBdcStatusFeedbackService.getSumById(id);
+	}
 	
 
 	//TEST/////////
@@ -70,8 +79,8 @@ public class TBdcStatusFeedbackController {
 		tBdcPreparationOrder.setPreparationOrderId(26);
 		
 		TBdcStatusFeedback tBdcStatusFeedback = new TBdcStatusFeedback();
-		tBdcStatusFeedback.setLargeEmergencyUnits("TestUnits");
 		tBdcStatusFeedback.setPreparationOrderId(tBdcPreparationOrder);
+		tBdcStatusFeedback.setLargeEmergencyUnits(2);
 		tBdcStatusFeedback.setVehiclePatrolsHumans(10);
 		tBdcStatusFeedback.setVehiclePatrolsUnits(2);
 		tBdcStatusFeedback.setStatus(1);

@@ -35,8 +35,8 @@ public class TBdcStatusFeedback implements Serializable {
 	@ManyToOne//设置在“一方”pojo的外键字段上       
 	private TBdcPreparationOrder preparationOrderId;
 	
-	@Column(nullable = false, length=20)
-	private String largeEmergencyUnits;
+	@Column(nullable = true, precision=20)
+	private int largeEmergencyUnits;
 	
 	@Column(nullable = true, precision=20)
 	private int largeEmergencyHumans;
@@ -127,11 +127,11 @@ public class TBdcStatusFeedback implements Serializable {
 		this.preparationOrderId = preparationOrderId;
 	}
 
-	public String getLargeEmergencyUnits() {
+	public int getLargeEmergencyUnits() {
 		return largeEmergencyUnits;
 	}
 
-	public void setLargeEmergencyUnits(String largeEmergencyUnits) {
+	public void setLargeEmergencyUnits(int largeEmergencyUnits) {
 		this.largeEmergencyUnits = largeEmergencyUnits;
 	}
 
