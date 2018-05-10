@@ -10,6 +10,13 @@ keystore.p12
 ### .DS_ ###
 .DS_*
 
+### KEY ###
+*.key
+*.pem
+*.pfx
+*.zip
+*.txt
+
 ### STS ###
 .apt_generated
 .classpath

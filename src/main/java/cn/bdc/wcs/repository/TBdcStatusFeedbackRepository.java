@@ -9,4 +9,5 @@ public interface TBdcStatusFeedbackRepository extends CrudRepository<TBdcStatusF
 	
 	public Iterable<TBdcStatusFeedback> findAllByPreparationOrderId(TBdcPreparationOrder preparationOrderId);
 	
+	public Iterable<TBdcStatusFeedback> findAllByPreparationOrderIdAndCreatedSubUnit(TBdcPreparationOrder preparationOrderId, String createdSubUnit);
 }

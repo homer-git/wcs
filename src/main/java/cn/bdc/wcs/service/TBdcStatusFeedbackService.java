@@ -49,6 +49,12 @@ public class TBdcStatusFeedbackService extends BaseService {
 		return tBdcStatusFeedbackRepository.findAllByPreparationOrderId(tBdcPreparationOrder);
 	}
 
+	public Iterable<TBdcStatusFeedback> getAllByPreparationOrderIdAndcreatedSubUnit(int preparationOrderId, String createdSubUnit){
+		TBdcPreparationOrder tBdcPreparationOrder = new TBdcPreparationOrder();
+		tBdcPreparationOrder.setPreparationOrderId(preparationOrderId);
+		return tBdcStatusFeedbackRepository.findAllByPreparationOrderIdAndCreatedSubUnit(tBdcPreparationOrder, createdSubUnit);
+	}
+
 	@Transactional
 	public Optional<TBdcStatusFeedback> getSumByPreparationOrderId(int preparationOrderId){
 

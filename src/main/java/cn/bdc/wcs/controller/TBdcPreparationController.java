@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import javax.annotation.Resource;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +18,7 @@ import cn.bdc.wcs.bean.TBdcPreparationOrder;
 import cn.bdc.wcs.service.TBdcPreparationNoticeService;
 import cn.bdc.wcs.service.TBdcPreparationOrderService;
 
-
+@CrossOrigin(origins = "*", maxAge = 3600) 
 @RestController
 @RequestMapping("/preparation")
 public class TBdcPreparationController {
@@ -46,39 +47,39 @@ public class TBdcPreparationController {
     	return returnMap;
     } 
 	
-	@RequestMapping("/order/delete")
+	@RequestMapping(value = "/order/delete", method = { RequestMethod.POST, RequestMethod.GET })
 	public String deleteOrder(int id) {
 		tBdcPreparationOrderService.delete(id);
 		return "delete success.";
 	}
 
-	@RequestMapping("/order/getAll")
+	@RequestMapping(value = "/order/getAll", method = { RequestMethod.GET })
 	public Iterable<TBdcPreparationOrder> getAllOrder(){
 		return tBdcPreparationOrderService.getAll();
 	}
 
-	@RequestMapping("/order/getAllById")
+	@RequestMapping(value = "/order/getAllById", method = { RequestMethod.GET })
 	public Iterable<TBdcPreparationOrder> getAllByIdOrder(Iterable<Integer> ids){
 		return tBdcPreparationOrderService.getAllById(ids);
 	}
 
-	@RequestMapping("/order/getById")
+	@RequestMapping(value = "/order/getById", method = { RequestMethod.GET })
 	public Optional<TBdcPreparationOrder> getByIdOrder(Integer id){
 		return tBdcPreparationOrderService.getById(id);
 	}
 
-	@RequestMapping("/order/getByPreparationTitle")
+	@RequestMapping(value = "/order/getByPreparationTitle", method = { RequestMethod.GET })
 	public Optional<TBdcPreparationOrder> getByPreparationTitleOrder(String preparationTitle){
 		return tBdcPreparationOrderService.getByPreparationTitle(preparationTitle);
 	}
 
-	@RequestMapping("/order/getByPreparationTitleLike")
+	@RequestMapping(value = "/order/getByPreparationTitleLike", method = { RequestMethod.GET })
 	public Iterable<TBdcPreparationOrder> getByPreparationTitleOrderLike(String preparationTitle){
 		String lPreparationTitle = preparationTitle + "%";
 		return tBdcPreparationOrderService.getByPreparationTitleLike(lPreparationTitle);
 	} 
 
-	@RequestMapping("/order/getNextPreparationVersion")
+	@RequestMapping(value = "/order/getNextPreparationVersion", method = { RequestMethod.GET })
 	public String getNextPreparationVersion(){
 		return tBdcPreparationOrderService.getNextPreparationVersion();
 	} 
@@ -107,33 +108,33 @@ public class TBdcPreparationController {
     	return returnMap;
     }	
 	
-	@RequestMapping("/notice/delete")
+	@RequestMapping(value = "/notice/delete", method = { RequestMethod.POST, RequestMethod.GET })
 	public String deleteNotice(int id) {
 		tBdcPreparationNoticeService.delete(id);
 		return "delete success.";
 	}
 
-	@RequestMapping("/notice/getAll")
+	@RequestMapping(value = "/notice/getAll", method = { RequestMethod.GET })
 	public Iterable<TBdcPreparationNotice> getAllNotice(){
 		return tBdcPreparationNoticeService.getAll();
 	}
 
-	@RequestMapping("/notice/getAllById")
+	@RequestMapping(value = "/notice/getAllById", method = { RequestMethod.GET })
 	public Iterable<TBdcPreparationNotice> getAllByIdNotice(Iterable<Integer> ids){
 		return tBdcPreparationNoticeService.getAllById(ids);
 	}
 
-	@RequestMapping("/notice/getById")
+	@RequestMapping(value = "/notice/getById", method = { RequestMethod.GET })
 	public Optional<TBdcPreparationNotice> getByIdNotice(Integer id){
 		return tBdcPreparationNoticeService.getById(id);
 	}
 
-	@RequestMapping("/notice/getByPreparationTitle")
+	@RequestMapping(value = "/notice/getByPreparationTitle", method = { RequestMethod.GET })
 	public Optional<TBdcPreparationNotice> getByPreparationTitleNotice(String preparationTitle){
 		return tBdcPreparationNoticeService.getByPreparationTitle(preparationTitle);
 	}
 
-	@RequestMapping("/notice/getByPreparationTitleLike")
+	@RequestMapping(value = "/notice/getByPreparationTitleLike", method = { RequestMethod.GET })
 	public Iterable<TBdcPreparationNotice> getByPreparationTitleNoticeLike(String preparationTitle){
 		String lPreparationTitle = preparationTitle + "%";
 		return tBdcPreparationNoticeService.getByPreparationTitleLike(lPreparationTitle);
@@ -144,7 +145,7 @@ public class TBdcPreparationController {
 	
 	//TEST/////////
 
-	@RequestMapping("/order/saveTest")
+	@RequestMapping(value = "/order/saveTest", method = { RequestMethod.POST, RequestMethod.GET })
 	public Map<String, String> saveOrderTest() {
     	Map<String, String> returnMap = new HashMap<String, String>();
     	
@@ -163,7 +164,7 @@ public class TBdcPreparationController {
 		return returnMap;
 	}
 	
-	@RequestMapping("/notice/saveTest")
+	@RequestMapping(value = "/notice/saveTest", method = { RequestMethod.POST, RequestMethod.GET })
 	public Map<String, String> saveNoticeTest() {
     	Map<String, String> returnMap = new HashMap<String, String>();
     	
