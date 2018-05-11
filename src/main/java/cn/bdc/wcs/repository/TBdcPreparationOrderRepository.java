@@ -9,6 +9,8 @@ import cn.bdc.wcs.bean.TBdcPreparationOrder;
 
 public interface TBdcPreparationOrderRepository extends CrudRepository<TBdcPreparationOrder, Integer>{
 	
+	public Iterable<TBdcPreparationOrder> findAllByOrderByCrateDateDesc();
+	
 	public Optional<TBdcPreparationOrder> findByPreparationTitle(String preparationTitle);
 	
 	public Iterable<TBdcPreparationOrder> findByPreparationTitleLike(String preparationTitle);

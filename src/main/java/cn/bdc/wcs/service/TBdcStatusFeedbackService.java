@@ -32,7 +32,7 @@ public class TBdcStatusFeedbackService extends BaseService {
 	}
 	
 	public Iterable<TBdcStatusFeedback> getAll() {
-		return tBdcStatusFeedbackRepository.findAll();
+		return tBdcStatusFeedbackRepository.findAllByOrderByCrateDateDesc();
 	}
 
 	public Iterable<TBdcStatusFeedback> getAllById(Iterable<Integer> ids){

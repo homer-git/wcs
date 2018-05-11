@@ -9,6 +9,8 @@ import javax.annotation.Resource;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import cn.bdc.wcs.bean.TBdcPreparationOrder;
@@ -37,7 +39,7 @@ public class TBdcPreparationOrderService extends BaseService {
 	}
 	
 	public Iterable<TBdcPreparationOrder> getAll() {
-		return tBdcPreparationOrderRepository.findAll();
+		return tBdcPreparationOrderRepository.findAllByOrderByCrateDateDesc();
 	}
 
 	public Iterable<TBdcPreparationOrder> getAllById(Iterable<Integer> ids){

@@ -27,7 +27,7 @@ public class TBdcPreparationNoticeService {
 	}
 	
 	public Iterable<TBdcPreparationNotice> getAll() {
-		return tBdcPreparationNoticeRepository.findAll();
+		return tBdcPreparationNoticeRepository.findAllByOrderByCrateDateDesc();
 	}
 
 	public Iterable<TBdcPreparationNotice> getAllById(Iterable<Integer> id){
