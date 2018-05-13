@@ -7,8 +7,7 @@ import java.util.Optional;
 
 import javax.annotation.Resource;
 
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.bdc.wcs.bean.TBdcPreparationNotice;
 import cn.bdc.wcs.bean.TBdcPreparationOrder;
+import cn.bdc.wcs.common.service.WeChatQyAPIService;
 import cn.bdc.wcs.service.TBdcPreparationNoticeService;
 import cn.bdc.wcs.service.TBdcPreparationOrderService;
 
@@ -24,6 +24,18 @@ import cn.bdc.wcs.service.TBdcPreparationOrderService;
 @RestController
 @RequestMapping("/preparation")
 public class TBdcPreparationController {
+	
+	@Value("${wcs.wxqy.corpid}")
+	private String corpID;
+	
+	@Value("${wcs.wxqy.secret}")
+	private String secret;
+
+	@Value("${wcs.wxqy.agentid}")
+    private String agentId;
+	
+	@Value("${wcs.wxqy.sendmsg2deptid}")
+	private String sendMsg2DeptId;
 	
 	//防汛备勤令
 	@Resource
@@ -44,6 +56,18 @@ public class TBdcPreparationController {
 		tBdcPreparationOrder.setCreatedBy("-1");
 		tBdcPreparationOrder.setCreatedUnit("-1");
     	tBdcPreparationOrderService.save(tBdcPreparationOrder);
+    	
+    	StringBuffer msgSb = new StringBuffer();
+    	msgSb.append("备勤令：防汛备勤通知【");
+    	msgSb.append(tBdcPreparationOrder.getPreparationTitle());
+    	msgSb.append("】，请及时响应。");
+    	
+    	WeChatQyAPIService weChatQyAPIService = new WeChatQyAPIService();
+    	weChatQyAPIService.setCorpID(corpID);
+    	weChatQyAPIService.setSecret(secret);
+    	weChatQyAPIService.setAgentId(agentId);
+    	weChatQyAPIService.sendWeChatMsg("text", "", sendMsg2DeptId, "", msgSb.toString(), "", "","", "","", "0");  
+    	
     	returnMap.put("preparationOrderId", String.valueOf(tBdcPreparationOrder.getPreparationOrderId()));
     	
     	return returnMap;
