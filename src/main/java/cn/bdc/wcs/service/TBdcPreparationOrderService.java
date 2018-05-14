@@ -4,26 +4,18 @@ import java.util.Calendar;
 import java.util.Optional;
 
 import javax.annotation.Resource;
-//import javax.persistence.EntityManager;
-//import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
-import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import cn.bdc.wcs.bean.TBdcPreparationOrder;
 import cn.bdc.wcs.common.service.BaseService;
 import cn.bdc.wcs.repository.TBdcPreparationOrderRepository;
 
-import org.springframework.util.StringUtils;
-
 @Service
 public class TBdcPreparationOrderService extends BaseService {
-	
-//	@PersistenceContext
-//	private EntityManager em;	
 	
 	@Resource
 	private TBdcPreparationOrderRepository tBdcPreparationOrderRepository;
@@ -59,26 +51,41 @@ public class TBdcPreparationOrderService extends BaseService {
 	}	
 	
 	@Transactional
-	public String getNextPreparationVersion() {
-		
-		Calendar cal = Calendar.getInstance();
-		int year = cal.get(Calendar.YEAR);
+	public int getNextPreparationVersionSeqByYear(int year) {
 
-		String nextPreparationVersion = "";
 		int sequence = 1;
 		
 //		Query query = em.createQuery("select p from Person p where p.personid=?1 ");
-//		query.setParameter(1,new Integer(1)); 		
-		Query query = em.createQuery("SELECT max(preparationVersion) FROM TBdcPreparationOrder WHERE substr(preparationVersion,2,4) = :Year");
+//		query.setParameter(1,new Integer(1));
+//		Query query = em.createQuery("SELECT max(SUBSTRING_INDEX(substr(preparationVersion,INSTR(preparationVersion,'第') + 1),'期',1)) FROM TBdcPreparationOrder WHERE substr(preparationVersion,2,4) = :Year");
+		Query query = em.createQuery("SELECT max(preparationVersionSeq) FROM TBdcPreparationOrder WHERE preparationVersionYear = :Year");
 		query.setParameter("Year",year); 
 		Object result = query.getSingleResult();
 		if(!StringUtils.isEmpty(result)) {
-			String maxPreparationVersion = result.toString();
-			sequence = Integer.parseInt(maxPreparationVersion.substring(maxPreparationVersion.indexOf("第") + 1, maxPreparationVersion.indexOf("期")));
+			String maxPreparationVersionSeq = result.toString();
+			//sequence = Integer.parseInt(maxPreparationVersion.substring(maxPreparationVersion.indexOf("第") + 1, maxPreparationVersion.indexOf("期")));
+			sequence = Integer.parseInt(maxPreparationVersionSeq);
 			sequence++;			
 		}
-		nextPreparationVersion = "[" + year + "年]第" + sequence + "期";
+		return sequence;
+	}	
+	
+	@Transactional
+	public String getNextPreparationVersion() {
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		int nextPreparationVersionSeq = getNextPreparationVersionSeqByYear(year);
+
+		String nextPreparationVersion = "[" + year + "年]第" + nextPreparationVersionSeq + "期";
 		return nextPreparationVersion;
+	}
+	
+	@Transactional
+	public int getNextPreparationVersionSeqByCurrentYear() {
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		int nextPreparationVersionSeq = getNextPreparationVersionSeqByYear(year);
+		return nextPreparationVersionSeq;
 	}
 
 

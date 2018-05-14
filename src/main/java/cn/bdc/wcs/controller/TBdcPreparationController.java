@@ -1,5 +1,6 @@
 package cn.bdc.wcs.controller;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,21 +26,18 @@ import cn.bdc.wcs.service.TBdcPreparationOrderService;
 @RequestMapping("/preparation")
 public class TBdcPreparationController {
 	
-	@Value("${wcs.wxqy.corpid}")
-	private String corpID;
+	@Value("${wcs.wxqy.sendmsg2userids}")
+	private String sendMsg2UserIds;
 	
-	@Value("${wcs.wxqy.secret}")
-	private String secret;
-
-	@Value("${wcs.wxqy.agentid}")
-    private String agentId;
-	
-	@Value("${wcs.wxqy.sendmsg2deptid}")
-	private String sendMsg2DeptId;
+	@Value("${wcs.wxqy.sendmsg2deptids}")
+	private String sendMsg2DeptIds;
 	
 	//防汛备勤令
 	@Resource
 	private TBdcPreparationOrderService tBdcPreparationOrderService;
+	//发送微信企业号通知
+	@Resource
+	private WeChatQyAPIService weChatQyAPIService;
 	
     /** 
      * 请求内容是一个json串,spring会自动把他和我们的参数bean对应起来,不过要加@RequestBody注解 
@@ -50,6 +48,10 @@ public class TBdcPreparationController {
     	Map<String, String> returnMap = new HashMap<String, String>();
     	if(null == tBdcPreparationOrder.getPreparationVersion()) {
     		tBdcPreparationOrder.setPreparationVersion(tBdcPreparationOrderService.getNextPreparationVersion());
+    		Calendar cal = Calendar.getInstance();
+    		int year = cal.get(Calendar.YEAR);
+    		tBdcPreparationOrder.setPreparationVersionSeq(tBdcPreparationOrderService.getNextPreparationVersionSeqByYear(year));
+    		tBdcPreparationOrder.setPreparationVersionYear(year);
     	}
 		tBdcPreparationOrder.setPublishDate(new Date());
 		tBdcPreparationOrder.setCrateDate(new Date());
@@ -61,12 +63,8 @@ public class TBdcPreparationController {
     	msgSb.append("备勤令：防汛备勤通知【");
     	msgSb.append(tBdcPreparationOrder.getPreparationTitle());
     	msgSb.append("】，请及时响应。");
-    	
-    	WeChatQyAPIService weChatQyAPIService = new WeChatQyAPIService();
-    	weChatQyAPIService.setCorpID(corpID);
-    	weChatQyAPIService.setSecret(secret);
-    	weChatQyAPIService.setAgentId(agentId);
-    	weChatQyAPIService.sendWeChatMsg("text", "", sendMsg2DeptId, "", msgSb.toString(), "", "","", "","", "0");  
+
+    	weChatQyAPIService.sendWeChatMsg("text", sendMsg2UserIds, sendMsg2DeptIds, "", msgSb.toString(), "", "","", "","", "0");  
     	
     	returnMap.put("preparationOrderId", String.valueOf(tBdcPreparationOrder.getPreparationOrderId()));
     	
@@ -178,6 +176,10 @@ public class TBdcPreparationController {
 		TBdcPreparationOrder tBdcPreparationOrder = new TBdcPreparationOrder();
 		tBdcPreparationOrder.setPreparationTitle("Tile Preparation Order 中文测试");
 		tBdcPreparationOrder.setPreparationVersion(tBdcPreparationOrderService.getNextPreparationVersion());
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		tBdcPreparationOrder.setPreparationVersionSeq(tBdcPreparationOrderService.getNextPreparationVersionSeqByYear(year));
+		tBdcPreparationOrder.setPreparationVersionYear(year);
 		tBdcPreparationOrder.setPreparationContent("Content Preparation Order 中文测试");
 		tBdcPreparationOrder.setPublishDate(new Date());
 		tBdcPreparationOrder.setCrateDate(new Date());

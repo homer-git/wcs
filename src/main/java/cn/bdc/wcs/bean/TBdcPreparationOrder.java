@@ -38,6 +38,12 @@ public class TBdcPreparationOrder implements Serializable {
 	@Column(nullable = true, length=20)
 	private String preparationVersion;
 
+	@Column(nullable = true, precision=4)
+	private int preparationVersionYear;
+
+	@Column(nullable = true, precision=20)
+	private int preparationVersionSeq;
+
 	@Column(nullable = false, length=1000)
 	private String preparationContent;
 
@@ -95,6 +101,22 @@ public class TBdcPreparationOrder implements Serializable {
 
 	public void setPreparationVersion(String preparationVersion) {
 		this.preparationVersion = preparationVersion;
+	}
+
+	public int getPreparationVersionYear() {
+		return preparationVersionYear;
+	}
+
+	public void setPreparationVersionYear(int preparationVersionYear) {
+		this.preparationVersionYear = preparationVersionYear;
+	}
+
+	public int getPreparationVersionSeq() {
+		return preparationVersionSeq;
+	}
+
+	public void setPreparationVersionSeq(int preparationVersionSeq) {
+		this.preparationVersionSeq = preparationVersionSeq;
 	}
 
 	public String getPreparationContent() {

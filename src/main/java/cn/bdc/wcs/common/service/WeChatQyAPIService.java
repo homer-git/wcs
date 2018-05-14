@@ -12,10 +12,12 @@ import org.apache.commons.httpclient.cookie.CookiePolicy;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.commons.httpclient.params.DefaultHttpParams;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import net.sf.json.JSONObject;  
 
-public class WeChatQyAPIService {
+@Service
+public class WeChatQyAPIService extends BaseService {
 	
 	@Value("${wcs.wxqy.corpid}")
 	private String corpID;
@@ -27,15 +29,15 @@ public class WeChatQyAPIService {
     private String agentId;
   
     // 获取访问权限码URL  
-    private static String ACCESS_TOKEN_URL = "https://qyapi.weixin.qq.com/cgi-bin/gettoken";
+    private final static String ACCESS_TOKEN_URL = "https://qyapi.weixin.qq.com/cgi-bin/gettoken";
     // 创建会话请求URL  
     private final static String CREATE_SESSION_URL = "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=";  
   
     // 获取接口访问权限码  
     public String getAccessToken() {
-    	ACCESS_TOKEN_URL += "?corpid=" + corpID + "&corpsecret=" + secret;
+    	String accessTokenUrlAndParm = ACCESS_TOKEN_URL + "?corpid=" + corpID + "&corpsecret=" + secret;
     	HttpClient client = new HttpClient();
-    	PostMethod post = new PostMethod(ACCESS_TOKEN_URL);
+    	PostMethod post = new PostMethod(accessTokenUrlAndParm);
         post.releaseConnection();  
         post.setRequestHeader("Content-Type",  
                 "application/x-www-form-urlencoded;charset=UTF-8"); 
@@ -195,30 +197,6 @@ public class WeChatQyAPIService {
   
         }  
     } 
-
-	public String getCorpID() {
-		return corpID;
-	}
-
-	public void setCorpID(String corpID) {
-		this.corpID = corpID;
-	}
-
-	public String getSecret() {
-		return secret;
-	}
-
-	public void setSecret(String secret) {
-		this.secret = secret;
-	}
-
-	public String getAgentId() {
-		return agentId;
-	}
-
-	public void setAgentId(String agentId) {
-		this.agentId = agentId;
-	}
 
 	public static void main(String[] args) {  
     	WeChatQyAPIService weChat = new WeChatQyAPIService();
