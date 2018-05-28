@@ -43,7 +43,7 @@ public class TBdcStatusFeedbackController {
     	return returnMap;
     } 
 	
-	@RequestMapping(value = "/feedback/delete", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/feedback/delete", method = { RequestMethod.POST, RequestMethod.GET, RequestMethod.DELETE })
 	public String deleteFeedback(int id) {
 		tBdcStatusFeedbackService.delete(id);
 		return "delete success.";
@@ -54,12 +54,12 @@ public class TBdcStatusFeedbackController {
 		return tBdcStatusFeedbackService.getAll();
 	}
 
-	@RequestMapping(value = "/feedback/getAllById", method = { RequestMethod.GET })
+	@RequestMapping(value = "/feedback/getAllById", method = { RequestMethod.POST, RequestMethod.GET })
 	public Iterable<TBdcStatusFeedback> getAllByIdFeedback(Iterable<Integer> ids){
 		return tBdcStatusFeedbackService.getAllById(ids);
 	}
 
-	@RequestMapping(value = "/feedback/getById", method = { RequestMethod.GET })
+	@RequestMapping(value = "/feedback/getById", method = { RequestMethod.POST, RequestMethod.GET })
 	public Optional<TBdcStatusFeedback> getByIdFeedback(Integer id){
 		return tBdcStatusFeedbackService.getById(id);
 	}
@@ -71,17 +71,17 @@ public class TBdcStatusFeedbackController {
 	 * @param preparationOrderId
 	 * @return TBdcStatusFeedbacks
 	 */
-	@RequestMapping(value = "/feedback/getAllByPreparationOrderId", method = { RequestMethod.GET })
+	@RequestMapping(value = "/feedback/getAllByPreparationOrderId", method = { RequestMethod.POST, RequestMethod.GET })
 	public Iterable<TBdcStatusFeedback> getAllByPreparationOrderId(int preparationOrderId){
 		return tBdcStatusFeedbackService.getAllByPreparationOrderId(preparationOrderId);
 	}
 	
-	@RequestMapping(value = "/feedback/getAllByPreparationOrderIdAndcreatedSubUnit", method = { RequestMethod.GET })
+	@RequestMapping(value = "/feedback/getAllByPreparationOrderIdAndcreatedSubUnit", method = { RequestMethod.POST, RequestMethod.GET })
 	public Iterable<TBdcStatusFeedback> getAllByPreparationOrderIdAndcreatedSubUnit(int preparationOrderId, String createdSubUnit){
 		return tBdcStatusFeedbackService.getAllByPreparationOrderIdAndcreatedSubUnit(preparationOrderId, createdSubUnit);
 	}
 
-	@RequestMapping(value = "/feedback/getSumByPreparationOrderId", method = { RequestMethod.GET })
+	@RequestMapping(value = "/feedback/getSumByPreparationOrderId", method = { RequestMethod.POST, RequestMethod.GET })
 	public Optional<TBdcStatusFeedback> getSumByPreparationOrderId(Integer preparationOrderId){
 		return tBdcStatusFeedbackService.getSumByPreparationOrderId(preparationOrderId);
 	}

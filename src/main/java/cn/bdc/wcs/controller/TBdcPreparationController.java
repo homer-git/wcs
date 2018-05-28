@@ -71,7 +71,7 @@ public class TBdcPreparationController {
     	return returnMap;
     } 
 	
-	@RequestMapping(value = "/order/delete", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/order/delete", method = { RequestMethod.POST, RequestMethod.GET, RequestMethod.DELETE })
 	public String deleteOrder(int id) {
 		tBdcPreparationOrderService.delete(id);
 		return "delete success.";
@@ -82,28 +82,28 @@ public class TBdcPreparationController {
 		return tBdcPreparationOrderService.getAll();
 	}
 
-	@RequestMapping(value = "/order/getAllById", method = { RequestMethod.GET })
+	@RequestMapping(value = "/order/getAllById", method = { RequestMethod.POST, RequestMethod.GET })
 	public Iterable<TBdcPreparationOrder> getAllByIdOrder(Iterable<Integer> ids){
 		return tBdcPreparationOrderService.getAllById(ids);
 	}
 
-	@RequestMapping(value = "/order/getById", method = { RequestMethod.GET })
+	@RequestMapping(value = "/order/getById", method = { RequestMethod.POST, RequestMethod.GET })
 	public Optional<TBdcPreparationOrder> getByIdOrder(Integer id){
 		return tBdcPreparationOrderService.getById(id);
 	}
 
-	@RequestMapping(value = "/order/getByPreparationTitle", method = { RequestMethod.GET })
+	@RequestMapping(value = "/order/getByPreparationTitle", method = { RequestMethod.POST, RequestMethod.GET })
 	public Optional<TBdcPreparationOrder> getByPreparationTitleOrder(String preparationTitle){
 		return tBdcPreparationOrderService.getByPreparationTitle(preparationTitle);
 	}
 
-	@RequestMapping(value = "/order/getByPreparationTitleLike", method = { RequestMethod.GET })
+	@RequestMapping(value = "/order/getByPreparationTitleLike", method = { RequestMethod.POST, RequestMethod.GET })
 	public Iterable<TBdcPreparationOrder> getByPreparationTitleOrderLike(String preparationTitle){
 		String lPreparationTitle = preparationTitle + "%";
 		return tBdcPreparationOrderService.getByPreparationTitleLike(lPreparationTitle);
 	} 
 
-	@RequestMapping(value = "/order/getNextPreparationVersion", method = { RequestMethod.GET })
+	@RequestMapping(value = "/order/getNextPreparationVersion", method = { RequestMethod.POST, RequestMethod.GET })
 	public String getNextPreparationVersion(){
 		return tBdcPreparationOrderService.getNextPreparationVersion();
 	} 
@@ -132,7 +132,7 @@ public class TBdcPreparationController {
     	return returnMap;
     }	
 	
-	@RequestMapping(value = "/notice/delete", method = { RequestMethod.POST, RequestMethod.GET })
+	@RequestMapping(value = "/notice/delete", method = { RequestMethod.POST, RequestMethod.GET, RequestMethod.DELETE })
 	public String deleteNotice(int id) {
 		tBdcPreparationNoticeService.delete(id);
 		return "delete success.";
@@ -143,22 +143,22 @@ public class TBdcPreparationController {
 		return tBdcPreparationNoticeService.getAll();
 	}
 
-	@RequestMapping(value = "/notice/getAllById", method = { RequestMethod.GET })
+	@RequestMapping(value = "/notice/getAllById", method = { RequestMethod.POST, RequestMethod.GET })
 	public Iterable<TBdcPreparationNotice> getAllByIdNotice(Iterable<Integer> ids){
 		return tBdcPreparationNoticeService.getAllById(ids);
 	}
 
-	@RequestMapping(value = "/notice/getById", method = { RequestMethod.GET })
+	@RequestMapping(value = "/notice/getById", method = { RequestMethod.POST, RequestMethod.GET })
 	public Optional<TBdcPreparationNotice> getByIdNotice(Integer id){
 		return tBdcPreparationNoticeService.getById(id);
 	}
 
-	@RequestMapping(value = "/notice/getByPreparationTitle", method = { RequestMethod.GET })
+	@RequestMapping(value = "/notice/getByPreparationTitle", method = { RequestMethod.POST, RequestMethod.GET })
 	public Optional<TBdcPreparationNotice> getByPreparationTitleNotice(String preparationTitle){
 		return tBdcPreparationNoticeService.getByPreparationTitle(preparationTitle);
 	}
 
-	@RequestMapping(value = "/notice/getByPreparationTitleLike", method = { RequestMethod.GET })
+	@RequestMapping(value = "/notice/getByPreparationTitleLike", method = { RequestMethod.POST, RequestMethod.GET })
 	public Iterable<TBdcPreparationNotice> getByPreparationTitleNoticeLike(String preparationTitle){
 		String lPreparationTitle = preparationTitle + "%";
 		return tBdcPreparationNoticeService.getByPreparationTitleLike(lPreparationTitle);

@@ -1,5 +1,7 @@
 package cn.bdc.wcs.service;
 
+import java.util.Optional;
+
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
@@ -27,6 +29,18 @@ public class TBdcWeatherFilesService extends BaseService {
 	
 	public Iterable<TBdcWeatherFiles> getAll() {
 		return tBdcWeatherFilesRepository.findAll();
+	}
+	
+	public Optional<TBdcWeatherFiles> getById(int id) {
+		return tBdcWeatherFilesRepository.findById(id);
+	}
+	
+	public Iterable<TBdcWeatherFiles> getByFileTypeOrderByCrateDateDesc(String fileType) {
+		return tBdcWeatherFilesRepository.findByFileTypeOrderByCrateDateDesc(fileType);
+	}
+	
+	public Iterable<TBdcWeatherFiles> getByFileName(String fileName) {
+		return tBdcWeatherFilesRepository.findByFileName(fileName);
 	}
 
 
