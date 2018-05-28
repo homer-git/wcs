@@ -2,7 +2,6 @@ package cn.bdc.wcs.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import cn.bdc.wcs.bean.TBdcPreparationNotice;
 import cn.bdc.wcs.bean.TBdcPreparationOrder;
 import cn.bdc.wcs.bean.TBdcStatusFeedback;
 
