@@ -101,6 +101,6 @@ public class FtpDownloadRoute extends RouteBuilder {
             logger.error("get hostname fail !", e);
             return false;
         }
-        return hostName.indexOf(hostNodes) > -1;
+        return hostNodes.indexOf(hostName.trim()) != -1;
     }
 }
