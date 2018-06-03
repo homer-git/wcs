@@ -30,7 +30,7 @@ public class TBdcFloodPreventionBrochureController {
      *  
      */  
     @RequestMapping(value = "/brochure/save", method = { RequestMethod.POST, RequestMethod.GET })  
-    public Map<String, String> saveFeedback(@RequestBody TBdcFloodPreventionBrochure tBdcFloodPreventionBrochure) {  
+    public Map<String, String> saveBrochure(@RequestBody TBdcFloodPreventionBrochure tBdcFloodPreventionBrochure) {  
     	Map<String, String> returnMap = new HashMap<String, String>();
 
     	tBdcFloodPreventionBrochure.setCrateDate(new Date());
@@ -43,23 +43,23 @@ public class TBdcFloodPreventionBrochureController {
     } 
 	
 	@RequestMapping(value = "/brochure/delete", method = { RequestMethod.POST, RequestMethod.GET, RequestMethod.DELETE })
-	public String deleteFeedback(int id) {
+	public String deleteBrochure(int id) {
 		tBdcFloodPreventionBrochureService.delete(id);
 		return "delete success.";
 	}
 
 	@RequestMapping(value = "/brochure/getAll", method = { RequestMethod.GET })
-	public Iterable<TBdcFloodPreventionBrochure> getAllFeedback(){
+	public Iterable<TBdcFloodPreventionBrochure> getAllBrochure(){
 		return tBdcFloodPreventionBrochureService.getAll();
 	}
 
 	@RequestMapping(value = "/brochure/getAllById", method = { RequestMethod.POST, RequestMethod.GET })
-	public Iterable<TBdcFloodPreventionBrochure> getAllByIdFeedback(Iterable<Integer> ids){
+	public Iterable<TBdcFloodPreventionBrochure> getAllByIdBrochure(Iterable<Integer> ids){
 		return tBdcFloodPreventionBrochureService.getAllById(ids);
 	}
 
 	@RequestMapping(value = "/brochure/getById", method = { RequestMethod.POST, RequestMethod.GET })
-	public Optional<TBdcFloodPreventionBrochure> getByIdFeedback(Integer id){
+	public Optional<TBdcFloodPreventionBrochure> getByIdBrochure(Integer id){
 		return tBdcFloodPreventionBrochureService.getById(id);
 	}
 	
@@ -67,7 +67,7 @@ public class TBdcFloodPreventionBrochureController {
 	//TEST/////////
 	
 	@RequestMapping(value = "/brochure/saveTest", method = { RequestMethod.POST, RequestMethod.GET })
-	public Map<String, String> saveFeedbackTest() {
+	public Map<String, String> saveBrochureTest() {
     	Map<String, String> returnMap = new HashMap<String, String>();
     	
     	TBdcFloodPreventionBrochure tBdcFloodPreventionBrochure = new TBdcFloodPreventionBrochure();

@@ -62,4 +62,108 @@ public class TBdcPonding implements Serializable {
 
 	@Column(nullable = true, length=100)
 	private String attribute5;
+
+	public int getPondingId() {
+		return pondingId;
+	}
+
+	public void setPondingId(int pondingId) {
+		this.pondingId = pondingId;
+	}
+
+	public String getPondingPlace() {
+		return pondingPlace;
+	}
+
+	public void setPondingPlace(String pondingPlace) {
+		this.pondingPlace = pondingPlace;
+	}
+
+	public int getPondingArea() {
+		return pondingArea;
+	}
+
+	public void setPondingArea(int pondingArea) {
+		this.pondingArea = pondingArea;
+	}
+
+	public int getPondingDepth() {
+		return pondingDepth;
+	}
+
+	public void setPondingDepth(int pondingDepth) {
+		this.pondingDepth = pondingDepth;
+	}
+
+	public Date getCrateDate() {
+		return crateDate;
+	}
+
+	public void setCrateDate(Date crateDate) {
+		this.crateDate = crateDate;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getCreatedUnit() {
+		return createdUnit;
+	}
+
+	public void setCreatedUnit(String createdUnit) {
+		this.createdUnit = createdUnit;
+	}
+
+	public String getCreatedSubUnit() {
+		return createdSubUnit;
+	}
+
+	public void setCreatedSubUnit(String createdSubUnit) {
+		this.createdSubUnit = createdSubUnit;
+	}
+
+	public String getAttribute1() {
+		return attribute1;
+	}
+
+	public void setAttribute1(String attribute1) {
+		this.attribute1 = attribute1;
+	}
+
+	public String getAttribute2() {
+		return attribute2;
+	}
+
+	public void setAttribute2(String attribute2) {
+		this.attribute2 = attribute2;
+	}
+
+	public String getAttribute3() {
+		return attribute3;
+	}
+
+	public void setAttribute3(String attribute3) {
+		this.attribute3 = attribute3;
+	}
+
+	public String getAttribute4() {
+		return attribute4;
+	}
+
+	public void setAttribute4(String attribute4) {
+		this.attribute4 = attribute4;
+	}
+
+	public String getAttribute5() {
+		return attribute5;
+	}
+
+	public void setAttribute5(String attribute5) {
+		this.attribute5 = attribute5;
+	}
 }

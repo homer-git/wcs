@@ -42,7 +42,7 @@ public class TBdcWeatherFiles implements Serializable {
 	private String fileUri;
 
 	@Column(nullable = true, length=500)
-	private String fileFTPUri;
+	private String fileFtpUri;
 
 	@Column(nullable = true, length=50)
 	private String fileSuffix;
@@ -134,11 +134,11 @@ public class TBdcWeatherFiles implements Serializable {
 	}
 
 	public String getFileFTPUri() {
-		return fileFTPUri;
+		return fileFtpUri;
 	}
 
 	public void setFileFTPUri(String fileFTPUri) {
-		this.fileFTPUri = fileFTPUri;
+		this.fileFtpUri = fileFTPUri;
 	}
 
 	public String getFileSuffix() {
