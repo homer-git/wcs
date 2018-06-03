@@ -42,7 +42,7 @@ public class TBdcAttachmentsController {
 	@Value("${wcs.attachments.path}")
 	private String attachmentsPath;
 
-	@Value("${wcs.http.url}")
+	@Value("${wcs.attachments.http.url}")
 	private String httpUri;
 	
 	@Value("${wcs.attachments.file.separator}")
