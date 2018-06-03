@@ -132,9 +132,9 @@ public class TBdcAttachmentsController {
 				String fileUri = httpUri + "/" + todayStr + "/" + uuidFileName;
 				tBdcAttachments.setFileUri(fileUri);
 				
-				File filePathExists =new File(attachmentsPath + fileSeparator + todayStr); 
+				File filePathExists =new File(attachmentsPath + fileSeparator + todayStr + fileSeparator); 
 				if (!filePathExists.exists()  && !filePathExists.isDirectory())
-					filePathExists.mkdir();
+					filePathExists.mkdirs();
 				
 				BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(new File(filePath)));
 				out.write(file.getBytes());
@@ -219,9 +219,9 @@ public class TBdcAttachmentsController {
 					String fileUri = httpUri + "/" + todayStr + "/" + uuidFileName;
 					tBdcAttachments.setFileUri(fileUri);
 					
-					File filePathExists =new File(attachmentsPath + fileSeparator + todayStr); 
-					if (!filePathExists.exists()  && !filePathExists.isDirectory())
-						filePathExists.mkdir();
+					File filePathExists =new File(attachmentsPath + fileSeparator + todayStr + fileSeparator); 
+					if (!filePathExists.exists() && !filePathExists.isDirectory())
+						filePathExists.mkdirs();
 
 					byte[] bytes = file.getBytes();
 					stream = new BufferedOutputStream(new FileOutputStream(new File(filePath)));
