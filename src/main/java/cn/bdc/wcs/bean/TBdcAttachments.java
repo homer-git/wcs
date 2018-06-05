@@ -29,6 +29,12 @@ public class TBdcAttachments implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO) 
 	private int attachmentId;
 
+	@Column(nullable = true, length=150)
+	private String attachmentTitle;
+
+	@Column(nullable = true, length=500)
+	private String attachmentDesc;
+
 	@Column(nullable = false, length=150)
 	private String sourceTable;
 	
@@ -113,6 +119,22 @@ public class TBdcAttachments implements Serializable {
 
 	public void setAttachmentId(int attachmentId) {
 		this.attachmentId = attachmentId;
+	}
+
+	public String getAttachmentTitle() {
+		return attachmentTitle;
+	}
+
+	public void setAttachmentTitle(String attachmentTitle) {
+		this.attachmentTitle = attachmentTitle;
+	}
+
+	public String getAttachmentDesc() {
+		return attachmentDesc;
+	}
+
+	public void setAttachmentDesc(String attachmentDesc) {
+		this.attachmentDesc = attachmentDesc;
 	}
 
 	public String getSourceTable() {

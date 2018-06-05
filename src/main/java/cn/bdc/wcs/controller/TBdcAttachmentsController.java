@@ -98,7 +98,7 @@ public class TBdcAttachmentsController {
 	 */
 	@RequestMapping("/upload")
 	@ResponseBody
-	public String handleFileUpload(@RequestParam("file") MultipartFile file, String sourceTable, String sourceId) {
+	public String handleFileUpload(@RequestParam("file") MultipartFile file, String sourceTable, String sourceId, String attachmentTitle, String attachmentDesc) {
 		if (!file.isEmpty()) {
 			try {
 				
@@ -114,6 +114,8 @@ public class TBdcAttachmentsController {
 				tBdcAttachments.setSourceTable(sourceTable);
 				tBdcAttachments.setSourceId(sourceId);
 				tBdcAttachments.setSourceSeq(1);
+				tBdcAttachments.setAttachmentTitle(attachmentTitle);
+				tBdcAttachments.setAttachmentDesc(attachmentDesc);
 				tBdcAttachments.setFileMimeType(file.getContentType());
 				tBdcAttachments.setFileSize(file.getSize());
 				
@@ -182,6 +184,8 @@ public class TBdcAttachmentsController {
 		List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
 		String sourceTable = request.getParameter("sourceTable");
 		String sourceId = request.getParameter("sourceId");
+		String attachmentTitle = request.getParameter("attachmentTitle");
+		String attachmentDesc = request.getParameter("attachmentDesc");
 		MultipartFile file = null;
 		BufferedOutputStream stream = null;
 		Calendar calendar = Calendar.getInstance();
@@ -200,6 +204,8 @@ public class TBdcAttachmentsController {
 					
 					tBdcAttachments.setSourceTable(sourceTable);
 					tBdcAttachments.setSourceId(sourceId);
+					tBdcAttachments.setAttachmentTitle(attachmentTitle);
+					tBdcAttachments.setAttachmentDesc(attachmentDesc);
 					tBdcAttachments.setSourceSeq(i + 1);
 					tBdcAttachments.setFileMimeType(file.getContentType());
 					tBdcAttachments.setFileSize(file.getSize());
